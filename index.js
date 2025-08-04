@@ -1,5 +1,5 @@
 //server restart ke liye npm i -D nodemon download in depencies  docs express api
-//require('dotenv').config()
+//require('dotenv').config()  dot env website for environment variables agar node ka new version hai to dot env ki jarurat nhi pdti hai pehle se hi rahta hai
 import 'dotenv/config'
 import express from 'express'
 
