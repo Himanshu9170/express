@@ -1,8 +1,10 @@
 //server restart ke liye npm i -D nodemon download in depencies  docs express api
+//require('dotenv').config()
+import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 
 
