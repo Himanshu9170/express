@@ -6,7 +6,8 @@ import 'dotenv/config'
 import express from 'express'
 import logger from './logger.js' //logger for logging requests
 //import logger from './logger.js' // custom logger using winston
-import morgan  from "morgan";
+import morgan from 'morgan'; // morgan for logging HTTP requests
+//import morgan from 'morgan'; // morgan for logging HTTP requests --- IGNORE
 //import { createLogger, format, transports } from 'winston'; // custom logger using winston
 
 
@@ -15,9 +16,9 @@ const app = express()
 const port = process.env.PORT || 3000
 app.use(express.json())
 
-const morganFormat = morgan(':method :url :status :response-time ms');
-app.use(
-  morgan(morganFormat, {
+const morganFormat = morgan(':method :url :status :response-time ms - :res[content-length] bytes',);
+
+ app.use(morgan(morganFormat, {
     stream: {
       write: (message) => {
         const logObject = {
