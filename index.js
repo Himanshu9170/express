@@ -18,7 +18,7 @@ app.use(express.json())
 
 const morganFormat = morgan(':method :url :status :response-time ms - :res[content-length] bytes',);
 
- app.use(morgan(morganFormat, {
+ /*app.use(morgan(morganFormat, {
     stream: {
       write: (message) => {
         const logObject = {
@@ -29,6 +29,16 @@ const morganFormat = morgan(':method :url :status :response-time ms - :res[conte
         };
         logger.info(JSON.stringify(logObject));
       },
+    },
+  })
+);
+
+*/
+//work the chatgpt code for morgan with winston logger hitesh sir code not work
+app.use(
+  morgan('combined', {
+    stream: {
+      write: (message) => logger.info(message.trim()),
     },
   })
 );
@@ -51,7 +61,7 @@ const morganFormat = morgan(':method :url :status :response-time ms - :res[conte
             //add a new tea
             app.post('/teas',(req,res) => {
              // console.log("POST"); 
-             logger.info("POST request is made to add a new tea")             
+            // logger.info("POST request is made to add a new tea")             
     const {name,price} = req.body;
     const newTea = {id: nextId++,name,price}
     teaData.push(newTea)
